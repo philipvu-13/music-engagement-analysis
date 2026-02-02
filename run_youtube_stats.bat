@@ -1,7 +1,7 @@
 @echo off
 echo Starting YouTube stats job...
 
-cd C:\Users\phili\Desktop\dont-be-dumb-analysis
+cd C:\Users\phili\Desktop\music-engagement-analysis
 echo Current directory:
 cd
 
