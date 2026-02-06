@@ -1,4 +1,3 @@
-1) README (paste this into README.md)
 # Music Engagement Analysis — *Don’t Be Dumb* (A$AP Rocky)
 
 Analyzing listener engagement and lyrical patterns from A$AP Rocky’s long awaited and newly released album, *Don’t Be Dumb*, using public APIs, SQL, and Python.
@@ -59,7 +58,7 @@ assets/
 data/
   (optional: raw/ or derived/ depending on what you commit)
 
-🔧 How It Works (Pipeline)
+## 🔧 How It Works (Pipeline)
 
 Python scripts pull:
 
