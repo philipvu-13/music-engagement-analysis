@@ -1,5 +1,13 @@
 # Music Engagement Analysis: *Don’t Be Dumb* — A$AP Rocky  
-*Analyzing lyrical patterns and listener engagement across the newly released album using YouTube and Genius data*
+A production-style analytics pipeline that quantifies how lyrical structure influences early-release YouTube engagement.
+
+Built using Python, PostgreSQL, Docker, and Metabase, this project transforms public API data into reproducible, decision-ready insights.
+
+---
+
+## 📊 Sample Visualization
+This scatter plot visualizes the relationship between lyrical repetition and normalized engagement quality during the early release window.
+![Dashboard Screenshot](assets/metabase/01_Metabase-Repeat%20Ratio%20vs%20Window%20Engagement%20Score.png)
 
 ---
 
@@ -32,7 +40,20 @@ To investigate the relationship between **lyrical patterns** (repetition, length
 ---
 
 ## 🔁 Data Pipeline  
-
+### Architecture Overview
+```
+YouTube Data API      Genius API
+        │                   │
+        └───────┬───────────┘
+                ▼
+        Python ETL Pipeline
+                ▼
+        PostgreSQL Database
+                ▼
+        SQL View (track_analysis_v)
+                ▼
+        Metabase Dashboard
+```
 1. **Extract**  
    - Track list and metadata  
    - YouTube video matches (primary video per track)  
@@ -59,11 +80,6 @@ To investigate the relationship between **lyrical patterns** (repetition, length
    - Lyric stats and derived segments
 
 ---
-
-## 📊 Sample Visualization
-This scatter plot visualizes the relationship between lyrical repetition and normalized engagement quality during the early release window.
-![Dashboard Screenshot](assets/metabase/01_Metabase-Repeat%20Ratio%20vs%20Window%20Engagement%20Score.png)
-
 
 ## 🚀 Quickstart (Run Locally)
 
@@ -280,6 +296,19 @@ Consistent with typical album release dynamics—momentum tapers after initial s
 
 ---
 
+## 🧩 Why This Matters
+
+For artists, labels, and digital marketing teams, understanding early-release momentum vs engagement quality is critical for:
+
+• Allocating promotional budget  
+• Selecting singles  
+• Prioritizing social content  
+• Forecasting long-tail performance  
+
+This framework can be generalized to any album release or media launch.
+
+---
+
 ## 🚀 Actionable Recommendations  
 
 ### 1. **Adopt a *Momentum vs Engagement* framework**  
@@ -328,8 +357,8 @@ scripts/
 assets/metabase/
     # Dashboard screenshots and exported CSVs
 
-data/
-    # Optional raw/processed data samples
+data/ (gitignore)
+    # Raw CSV outputs generated via API pulls (not included due to API usage policies)
 ```
 
 ---
