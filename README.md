@@ -46,13 +46,13 @@ YouTube Data API      Genius API
         │                   │
         └───────┬───────────┘
                 ▼
-        Python ETL Pipeline
+        Python ETL Pipeline (API pull)
                 ▼
-        PostgreSQL Database
+        PostgreSQL Database (storage)
                 ▼
-        SQL View (track_analysis_v)
+        SQL View (feature engineering)
                 ▼
-        Metabase Dashboard
+        Metabase Dashboard (visualization)
 ```
 1. **Extract**  
    - Track list and metadata  
