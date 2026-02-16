@@ -300,10 +300,10 @@ Consistent with typical album release dynamics—momentum tapers after initial s
 
 For artists, labels, and digital marketing teams, understanding early-release momentum vs engagement quality is critical for:
 
-• Allocating promotional budget  
-• Selecting singles  
-• Prioritizing social content  
-• Forecasting long-tail performance  
+- **Allocating promotional budget**  
+- **Selecting singles**  
+- **Prioritizing social content**  
+- **Forecasting long-tail performance**  
 
 This framework can be generalized to any album release or media launch.
 
