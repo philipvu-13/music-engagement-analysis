@@ -1,13 +1,15 @@
 @echo off
-echo Starting YouTube stats job...
+setlocal
 
-cd C:\Users\phili\Desktop\music-engagement-analysis
-echo Current directory:
-cd
+REM Move to the folder where this .bat file lives (the repo root)
+cd /d "%~dp0"
 
+REM (optional) activate venv if you use one
+IF EXIST ".venv\Scripts\activate.bat" (
+  call ".venv\Scripts\activate.bat"
+)
+
+REM Run your YouTube stats script (adjust the path if your script lives elsewhere)
 python scripts\03_pull_youtube_stats.py
 
-echo.
-echo Script finished. Press any key to close.
 pause
-
