@@ -3,6 +3,14 @@
 
 ---
 
+## 💡 What This Project Demonstrates
+- Designing a multi-source ETL pipeline using public APIs
+- Building a normalized analytics schema in PostgreSQL
+- Creating production-style SQL views for dashboard consumption
+- Translating data insights into strategic recommendations
+
+---
+
 ## 🎯 Objective  
 To investigate the relationship between **lyrical patterns** (repetition, length) and **YouTube engagement trends** across tracks from A$AP Rocky's album *Don't Be Dumb*, using a data pipeline built with public APIs, SQL, and Python.
 
