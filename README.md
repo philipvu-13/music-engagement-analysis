@@ -23,6 +23,35 @@ To investigate the relationship between **lyrical patterns** (repetition, length
 
 ---
 
+## 🔁 Data Pipeline  
+
+1. **Extract**  
+   - Track list and metadata  
+   - YouTube video matches (primary video per track)  
+   - Daily engagement snapshots (views, likes, comments) via YouTube Data API  
+   - Lyrics and lyric-level metrics via Genius API  
+
+2. **Load**  
+   Raw data is loaded into PostgreSQL tables:  
+   - `tracks`  
+   - `youtube_videos`  
+   - `youtube_stats_snapshots`  
+   - `lyrics`
+
+3. **Transform**  
+   - Primary video selection per track (official + highest views)  
+   - Calculation of window-based growth and engagement scores  
+   - Lyric analysis: repeat ratio, word count, lexical diversity  
+   - Bucketing for categorical analysis (`repeat_bucket`, `word_count_bucket`)
+
+4. **Analyze**  
+   Analytics view `track_analysis_v` provides one row per track with key metrics:  
+   - `window_engagement_score` – weighted interactions per 1k new views  
+   - `views_delta_per_day` – growth velocity during snapshot window  
+   - Lyric stats and derived segments
+
+---
+
 ## 🚀 Quickstart (Run Locally)
 
 This project can be fully reproduced locally using Docker, PostgreSQL, and Python.
@@ -193,35 +222,6 @@ Metabase cannot connect?
 
 psql not found?
 Install PostgreSQL client tools or use DBeaver to execute SQL files.
-
----
-
-## 🔁 Data Pipeline  
-
-1. **Extract**  
-   - Track list and metadata  
-   - YouTube video matches (primary video per track)  
-   - Daily engagement snapshots (views, likes, comments) via YouTube Data API  
-   - Lyrics and lyric-level metrics via Genius API  
-
-2. **Load**  
-   Raw data is loaded into PostgreSQL tables:  
-   - `tracks`  
-   - `youtube_videos`  
-   - `youtube_stats_snapshots`  
-   - `lyrics`
-
-3. **Transform**  
-   - Primary video selection per track (official + highest views)  
-   - Calculation of window-based growth and engagement scores  
-   - Lyric analysis: repeat ratio, word count, lexical diversity  
-   - Bucketing for categorical analysis (`repeat_bucket`, `word_count_bucket`)
-
-4. **Analyze**  
-   Analytics view `track_analysis_v` provides one row per track with key metrics:  
-   - `window_engagement_score` – weighted interactions per 1k new views  
-   - `views_delta_per_day` – growth velocity during snapshot window  
-   - Lyric stats and derived segments
 
 ---
 
