@@ -23,6 +23,179 @@ To investigate the relationship between **lyrical patterns** (repetition, length
 
 ---
 
+## 🚀 Quickstart (Run Locally)
+
+This project can be fully reproduced locally using Docker, PostgreSQL, and Python.
+
+---
+
+### 📋 Prerequisites
+
+- Docker + Docker Compose
+- Python 3.10+
+- YouTube Data API key
+- (Optional) Genius API token for lyrics
+
+---
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/philipvu-13/music-engagement-analysis.git
+cd music-engagement-analysis
+```
+
+---
+
+## 2️⃣ Create Environment Variables
+
+Copy the example file:
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and add your API keys:
+
+```env
+YOUTUBE_API_KEY=your_youtube_api_key_here
+GENIUS_ACCESS_TOKEN=your_genius_token_here
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=dont_be_dumb
+PGUSER=postgres
+PGPASSWORD=postgres
+```
+
+---
+
+## 3️⃣ Start Postgres + Metabase (Docker)
+
+```bash
+docker compose up -d
+```
+
+This will start:
+- PostgreSQL (port 5432)
+- Metabase (port 3000)
+
+---
+
+## 4️⃣ Create Database Tables
+
+```bash
+psql -h localhost -U postgres -d dont_be_dumb -f sql/01_schema.sql
+```
+
+You can also execute `sql/01_schema.sql` inside DBeaver if preferred.
+
+---
+
+## 5️⃣ Set Up Python Environment
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate it:
+
+Windows:
+```bash
+.venv\Scripts\activate
+```
+
+Mac/Linux:
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 6️⃣ Run the ETL Pipeline
+
+Run scripts in this order:
+
+```bash
+python scripts/01_pull_tracks.py
+python scripts/02_match_youtube_videos.py
+python scripts/03_pull_youtube_stats.py
+python scripts/04_pull_lyrics.py
+python scripts/05_load_to_postgres.py
+```
+
+---
+
+## 7️⃣ Create the Analytics View
+
+```bash
+psql -h localhost -U postgres -d dont_be_dumb -f sql/02_views.sql
+```
+
+This creates the main analysis dataset:
+
+`track_analysis_v`
+
+---
+
+## 8️⃣ Open Metabase
+
+Open in your browser:
+
+```
+http://localhost:3000
+```
+
+When connecting to PostgreSQL use:
+
+- Host: `postgres` (inside Docker network) OR `localhost`
+- Port: `5432`
+- Database: `dont_be_dumb`
+- Username: `postgres`
+- Password: `postgres`
+
+Primary dataset for dashboards:
+
+`track_analysis_v`
+
+---
+
+## 📦 Outputs
+
+- Raw extracted data (CSV): `data/` (ignored by git)
+- Database tables:
+  - `tracks`
+  - `youtube_videos`
+  - `youtube_stats_snapshots`
+  - `lyrics`
+- Analytics view:
+  - `track_analysis_v`
+- Dashboard screenshots:
+  - `assets/metabase/`
+
+---
+
+## 🧯 Troubleshooting
+
+Port 5432 already in use?
+Stop local Postgres or change Docker port mapping.
+
+Metabase cannot connect?
+- Inside Docker → Host = `postgres`
+- From host machine → Host = `localhost`
+
+psql not found?
+Install PostgreSQL client tools or use DBeaver to execute SQL files.
+
+---
+
 ## 🔁 Data Pipeline  
 
 1. **Extract**  
