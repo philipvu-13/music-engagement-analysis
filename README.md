@@ -365,4 +365,4 @@ data/ (gitignore)
 
 ## 📌 Project Status  
 ✅ **MVP complete** – pipeline, database, dashboard, and analysis finalized.  
-📘 **Refining documentation** and packaging for portfolio presentation.
+✅ **Refining documentation** and packaging for portfolio presentation.
