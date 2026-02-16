@@ -60,6 +60,11 @@ To investigate the relationship between **lyrical patterns** (repetition, length
 
 ---
 
+## 📊 Sample Visualization
+This scatter plot visualizes the relationship between lyrical repetition and normalized engagement quality during the early release window.
+![Dashboard Screenshot](assets/metabase/01_Metabase-Repeat%20Ratio%20vs%20Window%20Engagement%20Score.png)
+
+
 ## 🚀 Quickstart (Run Locally)
 
 This project can be fully reproduced locally using Docker, PostgreSQL, and Python.
