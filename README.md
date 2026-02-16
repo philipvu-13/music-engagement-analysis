@@ -366,3 +366,76 @@ data/ (gitignore)
 ## 📌 Project Status  
 ✅ **MVP complete** – pipeline, database, dashboard, and analysis finalized.  
 ✅ **Refining documentation** and packaging for portfolio presentation.
+
+---
+
+## 🔄 Long-Term Data Collection (Raspberry Pi Automation)
+
+### 🚀 Why This Upgrade?
+
+Originally, YouTube engagement data was pulled manually from my PC.  
+This required the machine to be running continuously, which is inefficient for long-term time-series analysis.
+
+To improve this, I introduced a **Raspberry Pi 5** to automate daily data collection in a low-power, always-on environment.
+
+---
+
+### ⚙️ What This Adds
+
+- The `03_pull_youtube_stats.py` script runs **once per day**
+- Each run inserts a new row per video into `youtube_stats_snapshots`
+- This creates a true **time-series dataset** instead of a single snapshot
+
+The Raspberry Pi runs the script using a scheduled task (cron job), enabling continuous, hands-off data collection.
+
+---
+
+### 📈 What This Unlocks Analytically
+
+With daily snapshots, the project now supports:
+
+- Views / Likes / Comments **per day**
+- Growth rate comparisons across tracks
+- Engagement acceleration over time
+- Rolling 7-day growth windows
+- Trend visualization in Metabase
+- “Fastest growing track this week” analysis
+- Time-normalized engagement scoring
+
+This transforms the project from static analysis → into a living, continuously updating analytics system.
+
+---
+
+### 🧠 Technical Implementation
+
+- Raspberry Pi 5 (low-power, 24/7 runtime)
+- Python script scheduled via `cron`
+- PostgreSQL stores incremental snapshots
+- Metabase visualizes long-term trends
+
+This upgrade demonstrates:
+- Automation
+- Time-series data engineering
+- Infrastructure thinking
+- Production-style scheduling
+- Scalable analytics design
+
+---
+
+### 🔮 Roadmap
+
+- [x] Initial static engagement analysis
+- [x] SQL analysis view (`track_analysis_v`)
+- [ ] Fully automated daily snapshot collection (Pi deployment)
+- [ ] Weekly growth summary queries
+- [ ] Alerting system for unusual engagement spikes
+- [ ] Multi-artist expansion
+
+---
+
+**Versioning Note**
+
+- `v1.0` → Manual PC-based snapshot analysis  
+- `v2.0` → Automated Raspberry Pi time-series system  
+
+This project continues to evolve toward a production-style analytics pipeline.
