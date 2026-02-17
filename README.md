@@ -275,14 +275,20 @@ Install PostgreSQL client tools or use DBeaver to execute SQL files.
 Correlation between `repeat_ratio` and `window_engagement_score` is weak (~0.07).  
 Highest-engagement tracks cluster in the moderate repetition range.
 
+![Dashboard Screenshot](assets/metabase/01_Metabase-Repeat%20Ratio%20vs%20Window%20Engagement%20Score.png)
+
 ### 2. **Word count has a clearer positive relationship with engagement**  
 Correlation between `word_count` and engagement score is moderately positive (~0.49).  
 Longer lyrical tracks tended to drive more interactions per new view.
+
+![Dashboard Screenshot](assets/metabase/02_Metabase-Word%20Count%20vs%20Window%20Engagement%20Score.png)
 
 ### 3. **Medium-repetition tracks averaged the highest engagement score**  
 - **Medium repetition:** ≈ 17.64 (14 tracks)  
 - **High repetition:** ≈ 13.45 (4 tracks)  
 - **Low repetition:** ≈ 6.16 (1 track)
+
+![Dashboard Screenshot](assets/metabase/03_Metabase-Avg%20Window%20Engagement%20Score%20by%20Repeat%20Bucket.png)
 
 ### 4. **"Most engaging" differs from "fastest growing" tracks**  
 | Rank | By Engagement Score               | By Growth Velocity (views/day)      |
